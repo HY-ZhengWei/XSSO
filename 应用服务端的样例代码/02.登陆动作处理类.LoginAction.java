@@ -5,6 +5,8 @@ import org.hy.common.Help;
 import org.hy.common.StringHelp;
 import org.hy.common.net.data.Communication;
 import org.hy.common.xml.XJava;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.fms.xx.common.AMFContext;
 import com.fms.xx.service.IUserService;
@@ -20,6 +22,10 @@ public class LoginAction
 {
     
     public final static String $SessionID = "LoginUser";
+    
+    @Autowired
+    @Qualifier("SSODAO")
+    private ISSODAO ssoDAO;  // 适用于SpringMVC的注入，其它方式的可以用：(ISSODAO) XJava.getObject("SSODAO");
     
     
 
@@ -107,7 +113,7 @@ public class LoginAction
                         System.out.println(Date.getNowTime().getFullMilli() + "  跨域单点登陆：" + v_LocalUser.getLoginAccount() + v_LocalUser.getUserName());
                         
                         v_LocalUser.setSessionID(v_LoginUser.getSessionID());  // 单点退出时用的票据
-                        getSession().setMaxInactiveInterval((int)v_SSODAO.getSSOSessionTimeOut());
+                        getSession().setMaxInactiveInterval((int)this.ssoDAO.getSSOSessionTimeOut());
                         getSession().setSessionAttribute($SessionID ,v_LocalUser);
                         
                         // 保持集群会话活力及有效性
@@ -146,7 +152,7 @@ public class LoginAction
         
         // 生成票据
         i_User.setSessionID(ISSODAO.$USID + getSession().getId());
-        getSession().setMaxInactiveInterval((int)v_SSODAO.getSSOSessionTimeOut());
+        getSession().setMaxInactiveInterval((int)this.ssoDAO.getSSOSessionTimeOut());
         getSession().setSessionAttribute($SessionID, i_User);
         
         // 单点登陆
