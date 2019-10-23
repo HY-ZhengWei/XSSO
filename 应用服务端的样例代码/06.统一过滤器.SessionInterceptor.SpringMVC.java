@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.hy.common.net.data.Communication;
 import org.hy.common.xml.XJava;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,6 +25,7 @@ import xxx.xxx.User;
  * @createDate  2019-06-26
  * @version     v1.0
  */
+@Component
 public class SessionInterceptor implements HandlerInterceptor 
 {
 
