@@ -17,6 +17,7 @@
 	    		<level>1</level>
 	    		<appID>MA110</appID>
 	    		<appName>在线会话数</appName>
+	    		<icon>:HttpBasePath/windows/images/xsso.png</icon>
 	    		<backgroundColor>#5ad190</backgroundColor>
 	    		<url>:HttpBasePath/analyses/analyseObject?xid=USID*</url>
 	    		<x>830</x>
