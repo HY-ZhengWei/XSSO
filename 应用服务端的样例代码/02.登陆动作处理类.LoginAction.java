@@ -5,6 +5,7 @@ import org.hy.common.Help;
 import org.hy.common.StringHelp;
 import org.hy.common.net.data.Communication;
 import org.hy.common.xml.XJava;
+import org.hy.common.xml.annotation.Xjava;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -25,7 +26,12 @@ public class LoginAction
     
     @Autowired
     @Qualifier("SSODAO")
-    private ISSODAO ssoDAO;  // 适用于SpringMVC的注入，其它方式的可以用：(ISSODAO) XJava.getObject("SSODAO");
+    private ISSODAO ssoDAO;                                      // 注入方式1：适用于SpringMVC的注入
+    
+    @Xjava
+    private ISSODAO ssoDAO;                                      // 注入方式2：适用于XJava的注入
+    
+    private ISSDAO  ssoDAO = (ISSODAO)XJava.getObject("SSODAO"); // 注入方式3：明码赋值
     
     
 
@@ -75,7 +81,7 @@ public class LoginAction
         }
         
         
-        // 跨域单点登陆
+        // 跨域单点登陆。票据不是对方系统传递来的，而是本系统页面访问单点服务获取的
         if ( !Help.isNull(i_USID) )
         {
             v_SessionData = (Communication)XJava.getObject(i_USID);
