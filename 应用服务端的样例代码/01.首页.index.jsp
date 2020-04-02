@@ -16,8 +16,6 @@
 	
 	var USID = "";
 	
-	
-	
     function getUSID(i_USID)
     {
     	if ( USID == "" && i_USID != null && i_USID != undefined && i_USID != "" )
@@ -42,7 +40,7 @@
   	%>
   	
   	<!-- 建议放在整个页面的最后的位置 -->
-	<script type="text/javascript" src="http://<%=v_ClusterServer%>/XSSO/sso?SSOCallBack=getUSID&r=<%= new Date().getTime() %>"></script>
+	<script type="text/javascript" src="https://<%=v_ClusterServer%>/XSSO/sso?SSOCallBack=getUSID&r=<%= new Date().getTime() %>"></script>
 
   </body>
 </html>
