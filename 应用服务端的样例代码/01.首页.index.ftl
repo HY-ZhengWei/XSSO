@@ -9,6 +9,30 @@
 	
 	<script type="text/javascript"> 
 	
+	function postGoto(i_URL ,i_ParamNames ,i_ParamValues) 
+    {
+        var v_TempForm = document.createElement("form");
+        v_TempForm.action        = i_URL;
+        v_TempForm.target        = "_self";
+        v_TempForm.method        = "post";
+        v_TempForm.style.display = "none";
+        
+        for (var v_Index in i_ParamNames) 
+        {
+            var v_Hidden = document.createElement("input");
+            v_Hidden.type  = "hidden";
+            v_Hidden.id    = i_ParamNames[v_Index];
+            v_Hidden.name  = i_ParamNames[v_Index];
+            v_Hidden.value = i_ParamValues[v_Index];
+            v_TempForm.appendChild(v_Hidden);
+        }
+        
+        document.body.appendChild(v_TempForm);
+        v_TempForm.submit();
+    }
+    
+    
+	
 	var USID = "";
 	
     function getUSID(i_USID)
@@ -16,7 +40,7 @@
     	if ( USID == "" && i_USID != null && i_USID != undefined && i_USID != "" )
    		{
     		USID = i_USID;
-    		window.location.href = "02.登陆页面.login.do?USID=" + i_USID;
+    		postGoto("${ctx}/02.登陆页面.login.do" ,["USID"] ,[i_USID]);
    		}
     	else
    		{

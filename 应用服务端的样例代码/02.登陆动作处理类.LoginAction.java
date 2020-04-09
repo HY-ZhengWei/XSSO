@@ -1,5 +1,7 @@
 package xx.xx.xx;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hy.common.Date;
 import org.hy.common.Help;
 import org.hy.common.StringHelp;
@@ -8,6 +10,11 @@ import org.hy.common.xml.XJava;
 import org.hy.common.xml.annotation.Xjava;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fms.xx.common.AMFContext;
 import com.fms.xx.service.IUserService;
@@ -19,6 +26,7 @@ import xxx.xxx.ISSODAO;
 
 
 
+@Controller
 public class LoginAction 
 {
     
@@ -48,7 +56,8 @@ public class LoginAction
      * @param i_USID  票据
      * @return
      */
-    public User loadSession(String i_USID)
+    @RequestMapping(value="/loginByXSSO" ,method=RequestMethod.POST)
+    public User loadSession(@RequestParam("USID") String i_USID ,HttpServletRequest i_Request ,ModelMap io_Model)
     {
         // 应用服务的相关代码
         // ...
