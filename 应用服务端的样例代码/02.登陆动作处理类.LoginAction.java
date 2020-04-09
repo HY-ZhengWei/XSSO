@@ -70,18 +70,10 @@ public class LoginAction
                 v_SSODAO.aliveClusterUser(v_LoginUser.getSessionID() ,(User)v_SessionData.getData());
                 return v_LoginUser;
             }
-            else
-            {
-                // 单点已退出
-                getSession().removeAttribute($SessionID);
-                getSession().invalidate();
-                
-                return null;
-            }
         }
         
         
-        // 跨域单点登陆。票据不是对方系统传递来的，而是本系统页面访问单点服务获取的
+        // 跨域单点登陆（或主动单点服务上获取用户）。票据不是对方系统传递来的，而是本系统页面访问单点服务获取的
         if ( !Help.isNull(i_USID) )
         {
             v_SessionData = (Communication)XJava.getObject(i_USID);
@@ -129,6 +121,17 @@ public class LoginAction
                     return v_LocalUser;
                 }
             }
+        }
+        else
+        {
+            // 释放业务Session
+            // ...
+            // ...
+            // ...
+            
+            // 单点已退出
+            getSession().removeAttribute($SessionID);
+            getSession().invalidate();
         }
         
         return null;
