@@ -62,7 +62,6 @@ public class SessionInterceptor implements HandlerInterceptor
             {
                 v_Session.setAttribute(BaseController.$SessionUser ,v_User);
                 
-                ISSODAO v_SSODAO = (ISSODAO) XJava.getObject("SSODAO");
                 v_SSODAO.aliveClusterUser(v_SessionData.getDataXID() ,(User)v_SessionData.getData());
             }
         }
