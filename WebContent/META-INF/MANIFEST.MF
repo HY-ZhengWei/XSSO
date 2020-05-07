@@ -1,4 +1,4 @@
 Manifest-Version: 1.0.7
 Created-By: HY.ZhengWei@qq.com  2017
-Specification-Version: 1.0.7  2019-08-17
+Specification-Version: 1.0.7  2020-05-07
 SourceCode: https://github.com/HY-ZhengWei/XSSO

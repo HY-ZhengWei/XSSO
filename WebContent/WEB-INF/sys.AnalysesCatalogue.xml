@@ -20,7 +20,7 @@
 	    		<icon>:HttpBasePath/windows/images/xsso.png</icon>
 	    		<backgroundColor>#5ad190</backgroundColor>
 	    		<url>:HttpBasePath/analyses/analyseObject?xid=USID*</url>
-	    		<x>830</x>
+	    		<x>610</x>
 	    		<y>390</y>
 	    		<desktopShow>true</desktopShow>
 	    		<sizeType>max</sizeType>

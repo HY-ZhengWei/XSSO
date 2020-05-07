@@ -1,0 +1,75 @@
+/* 浏览器  */
+@media screen and (min-width:1024px) {
+}
+
+/* iPhone6/7/8 Plus */
+@media screen and (min-width:414px) and (max-width:414px) {
+}
+
+/* iPhoneX */
+@media screen and (min-width:375px) and (max-width:375px) {
+}
+
+
+
+
+
+/** 标准字体大小 */
+.fSize1X {
+    font-size: 0.8rem;
+}
+
+/** 1.2倍标准字体大小 */
+.fSize1X2 {
+    font-size: 0.96rem;
+}
+
+/** 1.3倍标准字体大小 */
+.fSize1X3 {
+    font-size: 1.04rem;
+}
+
+/** 1.5倍标准字体大小 */
+.fSize1X5 {
+    font-size: 1.2rem;
+}
+
+/** 2倍标准字体大小 */
+.fSize2X {
+    font-size: 1.6rem;
+}
+
+/** 2.5倍标准字体大小 */
+.fSize2X5 {
+    font-size: 2rem;
+}
+
+/** 3倍标准字体大小 */
+.fSize3X {
+    font-size: 2.4rem;
+}
+
+/** 0.9倍标准字体大小 */
+.fSize0X9 {
+    font-size: 0.72rem;
+}
+
+/** 0.8倍标准字体大小 */
+.fSize0X8 {
+    font-size: 0.64rem;
+}
+
+/** 0.7倍标准字体大小 */
+.fSize0X7 {
+    font-size: 0.56rem;
+}
+
+/** 0.6倍标准字体大小 */
+.fSize0X6 {
+    font-size: 0.48rem;
+}
+
+/** 0.5倍标准字体大小 */
+.fSize0X5 {
+    font-size: 0.4rem;
+}
