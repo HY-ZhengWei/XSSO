@@ -2,115 +2,115 @@
 
 <config>
 
-	<import name="xconfig"         class="java.util.ArrayList" />
-	<import name="xparam"          class="java.util.Hashtable" />
-	<import name="item"            class="org.hy.common.app.Param" />
-	
-	
-	
-	<!-- 系统配置参数信息 -->
-	<xconfig>
-		
-	    <xparam id="SYSParam" key="name">
-	    
-	    	<item id="APPWEBID">
-	            <name>APPWEBID</name>
-				<value>XSSO</value>
-				<comment>部署Web服务所在主机的标示(建议只包含：数字和英文)</comment>
-	        </item>
-	        
-	        <item id="WhoAmI">
-	            <name>WhoAmI</name>
-				<value>
-				    127.0.0.1
-				</value>
-				<comment>在集群服务中标识出自己。请不要填写端口</comment>
-	        </item>
-	        
-	        <item id="ClusterServers">
-	            <name>ClusterServers</name>
-				<value>
-				    127.0.0.1:1821
-				</value>
-				<comment>全部单点登陆验证的集群服务器列表(用逗号分隔)</comment>
-	        </item>
-	        
-	        <item id="AppServers">
-	            <name>AppServers</name>
-				<value>
-				    127.0.0.1:1721
-				</value>
-				<comment>全部应用服务器列表(用逗号分隔)，内部通讯地址及端口</comment>
-	        </item>
-	        
-	        <item id="ClusterTimeout">
-	            <name>ClusterTimeout</name>
-				<value>30000</value>
-				<comment>集群并发通讯的超时时长(单位：毫秒)</comment>
-	        </item>
-	        
-	        <item id="SSOSessionTimeOut">
-	            <name>SSOSessionTimeOut</name>
-				<value>3600</value>
-				<comment>单点登陆的会话超时时长(单位：秒)</comment>
-	        </item>
-	        
-	        <item id="IsShowLog">
-	            <name>IsShowLog</name>
-				<value>true</value>
-				<comment>是否显示日志信息</comment>
-	        </item>
-	        
-	        <item id="AliveIntervalTime">
-	            <name>AliveIntervalTime</name>
-				<value>60</value>
-				<comment>保持集群会话活力的间隔时长(单位:秒)</comment>
-	        </item>
-	        
-	        <item id="RootPackageName">
-	            <name>RootPackageName</name>
-				<value>org.hy.xsso</value>
-				<comment>顶级包的路径。用于初始化。一般不修改</comment>
-	        </item>
-	    
-	        <item id="TPool_MaxThread">
-	            <name>TPool_MaxThread</name>
-				<value>10</value>
-				<comment>最大线程数</comment>
-	        </item>
-	        
-	        <item id="TPool_MinThread">
-	            <name>TPool_MinThread</name>
-				<value>1</value>
-				<comment>最小线程数</comment>
-	        </item>
-	        
-	        <item id="TPool_MinIdleThread">
-	            <name>TPool_MinIdleThread</name>
-				<value>1</value>
-				<comment>最小空闲数</comment>
-	        </item>
-	        
-	        <item id="TPool_IntervalTime">
-	            <name>TPool_IntervalTime</name>
-				<value>50</value>
-				<comment>间隔时间</comment>
-	        </item>
-	        
-	        <item id="TPool_IdleTimeKill">
-	            <name>TPool_IdleTimeKill</name>
-				<value>600</value>
-				<comment>空闲自毁时长</comment>
-	        </item>
-	        
-	        <item id="IsTimeTaskServer">
-	            <name>IsTimeTaskServer</name>
-				<value>true</value>
-				<comment>是否为(启用)定时任务服务器</comment>
-	        </item>
-	        
-		</xparam>
-		
-	</xconfig>
-	
+    <import name="xconfig"         class="java.util.ArrayList" />
+    <import name="xparam"          class="java.util.Hashtable" />
+    <import name="item"            class="org.hy.common.app.Param" />
+    
+    
+    
+    <!-- 系统配置参数信息 -->
+    <xconfig>
+        
+        <xparam id="SYSParam" key="name">
+        
+            <item id="APPWEBID">
+                <name>APPWEBID</name>
+                <value>XSSO</value>
+                <comment>部署Web服务所在主机的标示(建议只包含：数字和英文)</comment>
+            </item>
+            
+            <item id="WhoAmI">
+                <name>WhoAmI</name>
+                <value>
+                    127.0.0.1
+                </value>
+                <comment>在集群服务中标识出自己。请不要填写端口</comment>
+            </item>
+            
+            <item id="ClusterServers">
+                <name>ClusterServers</name>
+                <value>
+                    127.0.0.1:1821
+                </value>
+                <comment>全部单点登陆验证的集群服务器列表(用逗号分隔)</comment>
+            </item>
+            
+            <item id="AppServers">
+                <name>AppServers</name>
+                <value>
+                    127.0.0.1:1721
+                </value>
+                <comment>全部应用服务器列表(用逗号分隔)，内部通讯地址及端口</comment>
+            </item>
+            
+            <item id="ClusterTimeout">
+                <name>ClusterTimeout</name>
+                <value>30000</value>
+                <comment>集群并发通讯的超时时长(单位：毫秒)</comment>
+            </item>
+            
+            <item id="SSOSessionTimeOut">
+                <name>SSOSessionTimeOut</name>
+                <value>3600</value>
+                <comment>单点登陆的会话超时时长(单位：秒)</comment>
+            </item>
+            
+            <item id="IsShowLog">
+                <name>IsShowLog</name>
+                <value>true</value>
+                <comment>是否显示日志信息</comment>
+            </item>
+            
+            <item id="AliveIntervalTime">
+                <name>AliveIntervalTime</name>
+                <value>60</value>
+                <comment>保持集群会话活力的间隔时长(单位:秒)</comment>
+            </item>
+            
+            <item id="RootPackageName">
+                <name>RootPackageName</name>
+                <value>org.hy.xsso</value>
+                <comment>顶级包的路径。用于初始化。一般不修改</comment>
+            </item>
+        
+            <item id="TPool_MaxThread">
+                <name>TPool_MaxThread</name>
+                <value>10</value>
+                <comment>最大线程数</comment>
+            </item>
+            
+            <item id="TPool_MinThread">
+                <name>TPool_MinThread</name>
+                <value>1</value>
+                <comment>最小线程数</comment>
+            </item>
+            
+            <item id="TPool_MinIdleThread">
+                <name>TPool_MinIdleThread</name>
+                <value>1</value>
+                <comment>最小空闲数</comment>
+            </item>
+            
+            <item id="TPool_IntervalTime">
+                <name>TPool_IntervalTime</name>
+                <value>50</value>
+                <comment>间隔时间</comment>
+            </item>
+            
+            <item id="TPool_IdleTimeKill">
+                <name>TPool_IdleTimeKill</name>
+                <value>600</value>
+                <comment>空闲自毁时长</comment>
+            </item>
+            
+            <item id="IsTimeTaskServer">
+                <name>IsTimeTaskServer</name>
+                <value>true</value>
+                <comment>是否为(启用)定时任务服务器</comment>
+            </item>
+            
+        </xparam>
+        
+    </xconfig>
+    
 </config>
