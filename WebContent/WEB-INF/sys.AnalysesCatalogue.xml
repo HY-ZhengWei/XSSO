@@ -2,32 +2,32 @@
 
 <config>
 
-	<import name="xconfig"         class="java.util.ArrayList" />
-	<import name="xparam"          class="java.util.ArrayList" />
-	<import name="app"             class="org.hy.common.xml.plugins.analyse.data.WindowsApp" />
-	
-	
-	
-	<!-- 大纲目录 -->
-	<xconfig>
-		
-	    <xparam id="AnalysesCatalogue" this="AnalysesCatalogue">
-	    
-	        <app>
-	    		<level>1</level>
-	    		<appID>MA110</appID>
-	    		<appName>在线会话数</appName>
-	    		<icon>:HttpBasePath/windows/images/xsso.png</icon>
-	    		<backgroundColor>#5ad190</backgroundColor>
-	    		<url>:HttpBasePath/analyses/analyseObject?xid=USID*</url>
-	    		<x>610</x>
-	    		<y>390</y>
-	    		<desktopShow>true</desktopShow>
-	    		<sizeType>max</sizeType>
-	    	</app>
-	    	
-		</xparam>
-		
-	</xconfig>
-	
+    <import name="xconfig"         class="java.util.ArrayList" />
+    <import name="xparam"          class="java.util.ArrayList" />
+    <import name="app"             class="org.hy.common.xml.plugins.analyse.data.WindowsApp" />
+    
+    
+    
+    <!-- 大纲目录 -->
+    <xconfig>
+        
+        <xparam id="AnalysesCatalogue" this="AnalysesCatalogue">
+        
+            <app>
+                <level>1</level>
+                <appID>MA110</appID>
+                <appName>在线会话数</appName>
+                <icon>:HttpBasePath/windows/images/xsso.png</icon>
+                <backgroundColor>#5ad190</backgroundColor>
+                <url>:HttpBasePath/analyses/analyseObject?xid=USID*</url>
+                <x>610</x>
+                <y>390</y>
+                <desktopShow>true</desktopShow>
+                <sizeType>max</sizeType>
+            </app>
+            
+        </xparam>
+        
+    </xconfig>
+    
 </config>

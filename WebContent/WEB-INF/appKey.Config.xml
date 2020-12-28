@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+    <import name="xconfig"         class="java.util.ArrayList" />
+    <import name="xparam"          class="java.util.Hashtable" />
+    <import name="item"            class="org.hy.common.license.AppKey" />
+    
+    
+    
+    <!-- 系统密钥配置参数信息 -->
+    <xconfig>
+        
+        <xparam id="AppKeys" key="appKey">
+            
+            <item>
+                <appKey>0904202FB2EA4AC3A899B423928A0F8E</appKey>
+                <publicKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCeUETxx8eMRJ8S9jfjGbpAgofroLBG8OXtPzOu2TTlnpwPxBDsjZhWFvV//kivytVfBk1MmRf2oqgxa69LipH+syWXhwX5B+UOYN8MRYy6phaKsH+EbVo5gfoCWhMG2GSpWaa5aaScFJRdAL0v5JGzIRlT9il7pqFkehhQ00jqIwIDAQAB</publicKey>
+                <privateKey>MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAJ5QRPHHx4xEnxL2N+MZukCCh+ugsEbw5e0/M67ZNOWenA/EEOyNmFYW9X/+SK/K1V8GTUyZF/aiqDFrr0uKkf6zJZeHBfkH5Q5g3wxFjLqmFoqwf4RtWjmB+gJaEwbYZKlZprlppJwUlF0AvS/kkbMhGVP2KXumoWR6GFDTSOojAgMBAAECgYEAjBF47nJTm0cbdythRwz8PRdAKrmBPULmK4I/t/N1WbN7YHeYgbLFlWW60AOrS92p6ukoexz4lr5TEWa1MaDoiYncwX7MoyqSIKX62TZ/Saz/Mg15xfXnRnjOYA+8jo4nFfUo8V7OdFuJHl4j5Y/jyE/s+1SeMzPAHNv1u39l6AECQQDkiHqMJUNNksz2Y4U+fgFv0mSIgdXzK2RvS2T//M//7HInc0nrfXmKBCdAL+kTh+DfMOP/WkmIAsEGgs453LTrAkEAsVdFQ7dOWXND/mxF0hxJH1bxi0JCC8jYChz8cSFiB7P1hG5SEn9959HKfQKF4asOf0VZon5ZUPizt1EG4r2xqQJACNRNB8UYyJJ3YL2PlE6B97QFNlDt1ytCAhrDmDBISPb1ohiOLo72dyKZ8ZzoQFzrjzPwWxk95gdVNc8v8IRaaQJALHu+lRDK52chXBVeoiiUMvdFGXBiTsBvaIIC1IHSLCp44GIn1hoCw/58s0TJvmSA+22y4S6eStBHjCkX+BIrGQJBAKW1xrYNjZ5T2ymRrWX7ZGIorks7W+WiVb+9BsSkifD8n8KCjzhopzKQjV9zu0qG19n0UTPALXGpqdcJhn0WFnM=</privateKey>
+            </item>
+            
+        </xparam>
+        
+    </xconfig>
+    
+</config>

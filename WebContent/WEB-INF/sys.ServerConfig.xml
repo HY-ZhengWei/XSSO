@@ -2,32 +2,32 @@
 
 <config>
 
-	<import name="xconfig"         class="java.util.ArrayList" />
-	<import name="server"          class="org.hy.common.net.ServerSocket" />
-	
-	
-	
-	<!-- 系统服务配置信息 -->
-	<xconfig>
-	
-		<server id="Server">
-			<port>1821</port>
+    <import name="xconfig"         class="java.util.ArrayList" />
+    <import name="server"          class="org.hy.common.net.ServerSocket" />
+    
+    
+    
+    <!-- 系统服务配置信息 -->
+    <xconfig>
+    
+        <server id="Server">
+            <port>1821</port>
 <!--        
-			<minPort>17000</minPort>
-			<maxPort>17999</maxPort>
+            <minPort>17000</minPort>
+            <maxPort>17999</maxPort>
  -->
-			
-			<call name="addListener">
-				<listener class="org.hy.xsso.net.AliveListener" />
-			</call>
-			
-			<call name="addListener">
-				<listener class="org.hy.xsso.net.LogoutListener" />
-			</call>
-			
-			<call name="open" />
-		</server>
-		
-	</xconfig>
-	
+            
+            <call name="addListener">
+                <listener class="org.hy.xsso.net.AliveListener" />
+            </call>
+            
+            <call name="addListener">
+                <listener class="org.hy.xsso.net.LogoutListener" />
+            </call>
+            
+            <call name="open" />
+        </server>
+        
+    </xconfig>
+    
 </config>

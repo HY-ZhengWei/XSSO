@@ -2,31 +2,35 @@
 
 <config>
 
-	<import name="xconfig"         class="java.util.ArrayList" />
-	<import name="startupConfig"   class="java.util.ArrayList" />
-	<import name="item"            class="org.hy.common.app.Param" />
-	
-	
-	
-	<!-- 启动加载XML配置信息的列表 -->
-	<xconfig>
-		
-	    <startupConfig id="StartupConfig">
-	    
-	    	<item>
-	    		<value>sys.ServerConfig.xml</value>
-	    	</item>
-	    	
-	    	<item>
-	    		<value>cloud.Config.xml</value>
-	    	</item>
-	    	
-	    	<item>
-	    		<value>sys.AnalysesCatalogue.xml</value>
-	    	</item>
-	    	
-		</startupConfig>
-		
-	</xconfig>
-	
+    <import name="xconfig"         class="java.util.ArrayList" />
+    <import name="startupConfig"   class="java.util.ArrayList" />
+    <import name="item"            class="org.hy.common.app.Param" />
+    
+    
+    
+    <!-- 启动加载XML配置信息的列表 -->
+    <xconfig>
+        
+        <startupConfig id="StartupConfig">
+        
+            <item>
+                <value>sys.ServerConfig.xml</value>
+            </item>
+            
+            <item>
+                <value>cloud.Config.xml</value>
+            </item>
+            
+            <item>
+                <value>sys.AnalysesCatalogue.xml</value>
+            </item>
+            
+            <item>
+                <value>appKey.Config.xml</value>
+            </item>
+            
+        </startupConfig>
+        
+    </xconfig>
+    
 </config>
