@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hy.common.Date;
+import org.hy.common.ExpireMap;
 import org.hy.common.Help;
 import org.hy.common.StringHelp;
 import org.hy.common.license.AppKey;
@@ -37,7 +38,15 @@ public class GetAccessTokenServlet extends HttpServlet
     private static final Logger $Logger = new Logger(GetAccessTokenServlet.class);
     
     @SuppressWarnings("unchecked")
-    private static Map<String ,AppKey> $AppKeys = (Map<String ,AppKey>)XJava.getObject("AppKeys");
+    private static Map<String ,AppKey>       $AppKeys = (Map<String ,AppKey>)XJava.getObject("AppKeys");
+    
+    /** 
+     * 生成的访问TokenID 
+     * 
+     * map.key    为AppKey
+     * map.value  为TokenID
+     */
+    private static ExpireMap<String ,String> $TokenIDs = new ExpireMap<String ,String>(); 
     
     
     
@@ -100,7 +109,20 @@ public class GetAccessTokenServlet extends HttpServlet
             v_ResponseData.setCode("200");
             v_ResponseData.setMessage("正确");
             v_ResponseData.setData(new TokenResponseData());
-            v_ResponseData.getData().setAccess_token(StringHelp.getUUID());
+            
+            if ( $TokenIDs.containsKey(v_AppKey.getAppKey()) )
+            {
+                v_ResponseData.getData().setAccess_token($TokenIDs.get(v_AppKey.getAppKey()));
+                v_ResponseData.getData().setExpire((int)($TokenIDs.getExpireTimeLen(v_AppKey.getAppKey()) / 1000));
+            }
+            else
+            {
+                v_ResponseData.getData().setAccess_token(StringHelp.getUUID());
+                v_ResponseData.getData().setExpire(7200);
+                
+                $TokenIDs.put(v_AppKey.getAppKey() ,v_ResponseData.getData().getAccess_token() ,7200);
+            }
+            
             
             i_Response.getWriter().println(this.toReturn(v_ResponseData));
         }
