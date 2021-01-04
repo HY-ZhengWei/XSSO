@@ -41,6 +41,26 @@
     
     
     <servlet>
+        <servlet-name>GetLoginCodeServlet</servlet-name>
+        <servlet-class>org.hy.xsso.appInterfaces.servlet.GetLoginCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetLoginCodeServlet</servlet-name>
+        <url-pattern>/getLoginCode</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>GetLoginUserServlet</servlet-name>
+        <servlet-class>org.hy.xsso.appInterfaces.servlet.GetLoginUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetLoginUserServlet</servlet-name>
+        <url-pattern>/getLoginUser</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
         <servlet-name>AnalysesServlet</servlet-name>
         <servlet-class>org.hy.common.xml.plugins.analyse.AnalysesServlet</servlet-class>
     </servlet>

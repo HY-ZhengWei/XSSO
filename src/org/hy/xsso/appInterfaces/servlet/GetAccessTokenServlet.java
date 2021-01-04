@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,11 +13,11 @@ import org.hy.common.Help;
 import org.hy.common.StringHelp;
 import org.hy.common.license.AppKey;
 import org.hy.common.license.SignProvider;
-import org.hy.common.xml.XJSON;
 import org.hy.common.xml.XJava;
 import org.hy.common.xml.log.Logger;
 import org.hy.xsso.appInterfaces.servlet.bean.TokenResponse;
 import org.hy.xsso.appInterfaces.servlet.bean.TokenResponseData;
+import org.hy.xsso.common.BaseServlet;
 
 
 
@@ -31,14 +30,17 @@ import org.hy.xsso.appInterfaces.servlet.bean.TokenResponseData;
  * @createDate  2020-12-28
  * @version     v1.0
  */
-public class GetAccessTokenServlet extends HttpServlet
+public class GetAccessTokenServlet extends BaseServlet
 {
     private static final long serialVersionUID = 5937371087484778420L;
     
     private static final Logger $Logger = new Logger(GetAccessTokenServlet.class);
     
+    /**
+     * 所有配置有效的应用AppKey数据
+     */
     @SuppressWarnings("unchecked")
-    private static Map<String ,AppKey>       $AppKeys = (Map<String ,AppKey>)XJava.getObject("AppKeys");
+    private static Map<String ,AppKey>       $AppKeys          = (Map<String ,AppKey>)XJava.getObject("AppKeys");
     
     /** 
      * 生成的访问TokenID 
@@ -46,7 +48,32 @@ public class GetAccessTokenServlet extends HttpServlet
      * map.key    为AppKey
      * map.value  为TokenID
      */
-    private static ExpireMap<String ,String> $TokenIDs = new ExpireMap<String ,String>(); 
+    private static ExpireMap<String ,String> $AppKeyToTokenIDs = new ExpireMap<String ,String>();
+    
+    /** 
+     * 生成的访问TokenID 
+     * 
+     * map.key    为TokenID
+     * map.value  为AppKey
+     */
+    private static ExpireMap<String ,String> $TokenIDToAppKeys = new ExpireMap<String ,String>();
+    
+    
+    
+    /**
+     * 通过访问TokenID匹配到应用的AppKey
+     * 
+     * @author      ZhengWei(HY)
+     * @createDate  2020-12-31
+     * @version     v1.0
+     *
+     * @param i_TokenID
+     * @return
+     */
+    public static String getAppKey(String i_TokenID)
+    {
+        return $TokenIDToAppKeys.get(i_TokenID);
+    }
     
     
     
@@ -106,21 +133,22 @@ public class GetAccessTokenServlet extends HttpServlet
                 return;
             }
             
-            v_ResponseData.setCode("200");
+            v_ResponseData.setCode($Succeed);
             v_ResponseData.setMessage("正确");
             v_ResponseData.setData(new TokenResponseData());
             
-            if ( $TokenIDs.containsKey(v_AppKey.getAppKey()) )
+            if ( $AppKeyToTokenIDs.containsKey(v_AppKey.getAppKey()) )
             {
-                v_ResponseData.getData().setAccess_token($TokenIDs.get(v_AppKey.getAppKey()));
-                v_ResponseData.getData().setExpire((int)($TokenIDs.getExpireTimeLen(v_AppKey.getAppKey()) / 1000));
+                v_ResponseData.getData().setAccess_token($AppKeyToTokenIDs.get(v_AppKey.getAppKey()));
+                v_ResponseData.getData().setExpire((int)($AppKeyToTokenIDs.getExpireTimeLen(v_AppKey.getAppKey()) / 1000));
             }
             else
             {
                 v_ResponseData.getData().setAccess_token(StringHelp.getUUID());
                 v_ResponseData.getData().setExpire(7200);
                 
-                $TokenIDs.put(v_AppKey.getAppKey() ,v_ResponseData.getData().getAccess_token() ,7200);
+                $AppKeyToTokenIDs.put(v_AppKey.getAppKey() ,v_ResponseData.getData().getAccess_token() ,7200);
+                $TokenIDToAppKeys.put(v_ResponseData.getData().getAccess_token() ,v_AppKey.getAppKey() ,7200);
             }
             
             
@@ -131,28 +159,6 @@ public class GetAccessTokenServlet extends HttpServlet
             $Logger.error(exce);
             i_Response.getWriter().println(StringHelp.replaceAll("{'code':'10001' ,'message':'" + exce.getMessage() + "'}" ,"'" ,"\""));
         }
-    }
-    
-    
-    
-    /**
-     * 返回Json字符格式的结果
-     * 
-     * @author      ZhengWei(HY)
-     * @createDate  2020-12-28
-     * @version     v1.0
-     *
-     * @param i_Data
-     * @return
-     * @throws Exception
-     */
-    private String toReturn(TokenResponse i_Data) throws Exception
-    {
-        XJSON v_XJ = new XJSON();
-        
-        v_XJ.setReturnNVL(false);
-        
-        return v_XJ.toJson(i_Data).toJSONString();
     }
     
     
