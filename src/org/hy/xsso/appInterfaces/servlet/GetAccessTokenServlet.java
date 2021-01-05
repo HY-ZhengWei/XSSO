@@ -134,7 +134,7 @@ public class GetAccessTokenServlet extends BaseServlet
             }
             
             v_ResponseData.setCode($Succeed);
-            v_ResponseData.setMessage("正确");
+            v_ResponseData.setMessage("成功");
             v_ResponseData.setData(new TokenResponseData());
             
             if ( $AppKeyToTokenIDs.containsKey(v_AppKey.getAppKey()) )

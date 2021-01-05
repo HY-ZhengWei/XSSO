@@ -83,14 +83,16 @@ public class GetLoginUserServlet extends BaseServlet
                 return;
             }
             
-            AES    v_AES    = new AES(2 ,$AppKeys.get(v_User.getAppKey()).getPrivateKey());
-            String v_SID    = "";
-            String v_AppKey = "";
+            AES    v_AES       = new AES(2 ,$AppKeys.get(v_User.getAppKey()).getPrivateKey());
+            String v_SID       = "";
+            String v_AppKey    = "";
+            long   v_Timestamp = 0L;
             try
             {
-                v_SID    = v_AES.decrypt(v_UCID);
-                v_AppKey = v_SID.split("@")[1];
-                v_SID    = v_SID.split("@")[0];
+                v_SID       = v_AES.decrypt(v_UCID);
+                v_Timestamp = Long.parseLong(v_SID.split("@")[2]);
+                v_AppKey    = v_SID.split("@")[1];
+                v_SID       = v_SID.split("@")[0];
             }
             catch (Exception exce)
             {
@@ -123,9 +125,35 @@ public class GetLoginUserServlet extends BaseServlet
                 return;
             }
             
+            Object v_RetData = null;
+            if ( v_Communication.getData() instanceof com.fms.xx.sys.model.User )
+            {
+                com.fms.xx.sys.model.User v_Fms     = (com.fms.xx.sys.model.User)v_Communication.getData();
+                UserSSO                   v_RetUser = new UserSSO();
+                
+                v_RetUser.setAppKey(      v_AppKey);
+                v_RetUser.setUsid(        v_Fms.getSessionID());
+                v_RetUser.setUserNo(      v_Fms.getModelID());
+                v_RetUser.setLoginAccount(v_Fms.getLoginAccount());
+                v_RetUser.setMobile(      v_Fms.getPhone());
+                v_RetUser.setUserSource(  v_Fms.getRegSign());
+                v_RetUser.setUserName(    v_Fms.getUserName());
+                v_RetUser.setUserType(    v_Fms.getUserType());
+                
+                v_RetData = v_RetUser; 
+            }
+            else if ( v_Communication.getData() instanceof UserSSO )
+            {
+                v_RetData = (UserSSO)v_Communication.getData();
+            }
+            else
+            {
+                v_RetData = v_Communication.getData();
+            }
+            
             v_ResponseData.setCode($Succeed);
-            v_ResponseData.setMessage("正确");
-            v_ResponseData.setData(v_Communication.getData());
+            v_ResponseData.setMessage("成功");
+            v_ResponseData.setData(v_RetData);
             i_Response.getWriter().println(this.toReturn(v_ResponseData));
         }
         catch (Exception exce)

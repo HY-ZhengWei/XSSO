@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hy.common.Date;
 import org.hy.common.ExpireMap;
 import org.hy.common.Help;
 import org.hy.common.StringHelp;
@@ -113,7 +114,7 @@ public class GetLoginCodeServlet extends BaseServlet
             if ( Help.isNull(v_BodyData) )
             {
                 v_ResponseData.setCode($Succeed);
-                v_ResponseData.setMessage("正确");
+                v_ResponseData.setMessage("成功");
                 v_ResponseData.setData(new LoginCodeResponseData());
                 
                 v_ResponseData.getData().setCode(StringHelp.getUUID());
@@ -124,7 +125,7 @@ public class GetLoginCodeServlet extends BaseServlet
                 v_User.setAppKey(v_AppKey);
                 v_User.setSessionID(i_Request.getSession().getId());
                 
-                Cookie v_Cookie = new Cookie("UCID", URLEncoder.encode(v_AES.encrypt(v_User.getSessionID() + "@" + v_AppKey) ,"UTF-8"));
+                Cookie v_Cookie = new Cookie("UCID", URLEncoder.encode(v_AES.encrypt(v_User.getSessionID() + "@" + v_AppKey + "@" + Date.getNowTime().getTime()) ,"UTF-8"));
                 i_Response.addCookie(v_Cookie);
                 
                 $CodeToAppKeys.put(v_ResponseData.getData().getCode() ,v_User ,5 * 60);

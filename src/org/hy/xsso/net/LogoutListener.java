@@ -60,13 +60,29 @@ public class LogoutListener implements CommunicationListener
             return v_ResponseData;
         }
         
-        Log.log(":USID 用户退出，票据失效。" ,i_RequestData.getDataXID());
-        
         v_ResponseData.setDataXID(i_RequestData.getDataXID());
-        XJava.remove(i_RequestData.getDataXID());
-        AppCluster.logoutCluster(i_RequestData.getDataXID());
+        logout(i_RequestData.getDataXID());
         
         return v_ResponseData;
+    }
+    
+    
+    
+    /**
+     * 用户退出
+     * 
+     * @author      ZhengWei(HY)
+     * @createDate  2021-01-05
+     * @version     v1.0
+     *
+     * @param i_DataXID
+     */
+    public static void logout(String i_DataXID)
+    {
+        Log.log(":USID 用户退出，票据失效。" ,i_DataXID);
+        
+        XJava.remove(i_DataXID);
+        AppCluster.logoutCluster(i_DataXID);
     }
     
 }

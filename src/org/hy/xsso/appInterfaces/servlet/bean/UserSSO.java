@@ -26,6 +26,12 @@ public class UserSSO extends SerializableDef
     /** 用户在第三方用户中心的标识 */
     private String userId;
     
+    /** 用户在第三方用户中心的工号 */
+    private String userNo;
+    
+    /** 用户在第三方系统的编码 */
+    private String userCode;
+    
     /** 用户在第三方系统的手机号 */
     private String mobile;
     
@@ -38,11 +44,17 @@ public class UserSSO extends SerializableDef
     /** 用户在第三方系统的用户名 */
     private String userName;
     
-    /** 用户在第三方系统的编码 */
-    private String userCode;
+    /** 用户在第三方系统的昵称 */
+    private String nickname;
     
     /** 用户在第三方系统的用户类型 */
     private String userType;
+    
+    /** 用户在第三方系统的用户级别 */
+    private String userLevel;
+    
+    /** 用户在第三方系统的用户来源 */
+    private String userSource;
     
     /** 用户在第三方系统的登陆账号 */
     private String loginAccount;
@@ -387,6 +399,86 @@ public class UserSSO extends SerializableDef
     public void setUcid(String ucid)
     {
         this.ucid = ucid;
+    }
+
+    
+    /**
+     * 获取：用户在第三方用户中心的工号
+     */
+    public String getUserNo()
+    {
+        return userNo;
+    }
+
+    
+    /**
+     * 设置：用户在第三方用户中心的工号
+     * 
+     * @param userNo 
+     */
+    public void setUserNo(String userNo)
+    {
+        this.userNo = userNo;
+    }
+
+
+    /**
+     * 获取：用户在第三方系统的用户级别
+     */
+    public String getUserLevel()
+    {
+        return userLevel;
+    }
+
+    
+    /**
+     * 设置：用户在第三方系统的用户级别
+     * 
+     * @param userLevel 
+     */
+    public void setUserLevel(String userLevel)
+    {
+        this.userLevel = userLevel;
+    }
+
+    
+    /**
+     * 获取：用户在第三方系统的用户来源
+     */
+    public String getUserSource()
+    {
+        return userSource;
+    }
+
+    
+    /**
+     * 设置：用户在第三方系统的用户来源
+     * 
+     * @param userSource 
+     */
+    public void setUserSource(String userSource)
+    {
+        this.userSource = userSource;
+    }
+
+
+    /**
+     * 获取：用户在第三方系统的昵称
+     */
+    public String getNickname()
+    {
+        return nickname;
+    }
+
+    
+    /**
+     * 设置：用户在第三方系统的昵称
+     * 
+     * @param nickname 
+     */
+    public void setNickname(String nickname)
+    {
+        this.nickname = nickname;
     }
     
 }

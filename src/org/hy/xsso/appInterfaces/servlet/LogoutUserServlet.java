@@ -8,30 +8,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hy.common.Help;
 import org.hy.common.StringHelp;
-import org.hy.common.net.data.Communication;
-import org.hy.common.xml.XJava;
 import org.hy.common.xml.log.Logger;
 import org.hy.xsso.common.BaseResponse;
 import org.hy.xsso.common.BaseServlet;
-import org.hy.xsso.net.AliveListener;
+import org.hy.xsso.net.LogoutListener;
 
 
 
 
 
 /**
- * 单点登录第四步：保活用户。 
+ * 单点登录第五步：用户退出。 
  *
  * @author      ZhengWei(HY)
- * @createDate  2021-01-04
+ * @createDate  2021-01-05
  * @version     v1.0
  */
-public class AliveUserServlet extends BaseServlet
+public class LogoutUserServlet extends BaseServlet
 {
     
     private static final long serialVersionUID = 3708848763509595148L;
     
-    private static final Logger $Logger = new Logger(AliveUserServlet.class);
+    private static final Logger $Logger = new Logger(LogoutUserServlet.class);
     
     
     
@@ -44,27 +42,38 @@ public class AliveUserServlet extends BaseServlet
         
         try
         {
-            String v_USID = i_Request.getParameter("USID");
+            String v_USID  = i_Request.getParameter("USID");
+            String v_Token = i_Request.getParameter("token");
+            
+            if ( Help.isNull(v_Token) )
+            {
+                v_ResponseData.setCode("50011");
+                v_ResponseData.setMessage("请求票据无效！");
+                
+                i_Response.getWriter().println(this.toReturn(v_ResponseData));
+                return;
+            }
+            
+            String v_AppKey = GetAccessTokenServlet.getAppKey(v_Token);
+            if ( Help.isNull(v_AppKey) )
+            {
+                v_ResponseData.setCode("50011");
+                v_ResponseData.setMessage("请求票据无效！");
+                
+                i_Response.getWriter().println(this.toReturn(v_ResponseData));
+                return;
+            }
+            
             if ( Help.isNull(v_USID) )
             {
-                v_ResponseData.setCode("40011");
-                v_ResponseData.setMessage("编码无效！");
+                v_ResponseData.setCode("50012");
+                v_ResponseData.setMessage("编码无效或已过期！");
                 
                 i_Response.getWriter().println(this.toReturn(v_ResponseData));
                 return;
             }
             
-            Communication v_UserData = (Communication)XJava.getObject(v_USID);
-            if ( v_UserData == null || v_UserData.getData() == null )
-            {
-                v_ResponseData.setCode("40012");
-                v_ResponseData.setMessage("会话已过期！");
-                
-                i_Response.getWriter().println(this.toReturn(v_ResponseData));
-                return;
-            }
-            
-            AliveListener.alive(v_UserData.getDataXID() ,v_UserData.getData() ,v_UserData.getDataExpireTimeLen());
+            LogoutListener.logout(v_USID);
             
             v_ResponseData.setCode($Succeed);
             v_ResponseData.setMessage("成功");
@@ -73,7 +82,7 @@ public class AliveUserServlet extends BaseServlet
         catch (Exception exce)
         {
             $Logger.error(exce);
-            i_Response.getWriter().println(StringHelp.replaceAll("{'code':'40001' ,'message':'" + exce.getMessage() + "'}" ,"'" ,"\""));
+            i_Response.getWriter().println(StringHelp.replaceAll("{'code':'50001' ,'message':'" + exce.getMessage() + "'}" ,"'" ,"\""));
         }
     }
     

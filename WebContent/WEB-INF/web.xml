@@ -71,6 +71,16 @@
     
     
     <servlet>
+        <servlet-name>LogoutUserServlet</servlet-name>
+        <servlet-class>org.hy.xsso.appInterfaces.servlet.LogoutUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutUserServlet</servlet-name>
+        <url-pattern>/logoutUser</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
         <servlet-name>AnalysesServlet</servlet-name>
         <servlet-class>org.hy.common.xml.plugins.analyse.AnalysesServlet</servlet-class>
     </servlet>
