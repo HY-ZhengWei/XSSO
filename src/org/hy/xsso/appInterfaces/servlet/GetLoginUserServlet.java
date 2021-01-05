@@ -83,11 +83,14 @@ public class GetLoginUserServlet extends BaseServlet
                 return;
             }
             
-            AES    v_AES = new AES(2 ,$AppKeys.get(v_User.getAppKey()).getPrivateKey());
-            String v_SID = "";
+            AES    v_AES    = new AES(2 ,$AppKeys.get(v_User.getAppKey()).getPrivateKey());
+            String v_SID    = "";
+            String v_AppKey = "";
             try
             {
-                v_SID = v_AES.decrypt(v_UCID);
+                v_SID    = v_AES.decrypt(v_UCID);
+                v_AppKey = v_SID.split("@")[1];
+                v_SID    = v_SID.split("@")[0];
             }
             catch (Exception exce)
             {
@@ -97,6 +100,8 @@ public class GetLoginUserServlet extends BaseServlet
                 i_Response.getWriter().println(this.toReturn(v_ResponseData));
                 return;
             }
+            
+            /** @Todo 验证AppKey与用户的关系 */
             
             // 严格验证 SessionID 的一致性
 //            if ( !v_SID.equals(v_User.getSessionID()) )

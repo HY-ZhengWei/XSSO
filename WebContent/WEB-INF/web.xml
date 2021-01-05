@@ -61,6 +61,16 @@
     
     
     <servlet>
+        <servlet-name>AliveUserServlet</servlet-name>
+        <servlet-class>org.hy.xsso.appInterfaces.servlet.AliveUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AliveUserServlet</servlet-name>
+        <url-pattern>/aliveUser</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
         <servlet-name>AnalysesServlet</servlet-name>
         <servlet-class>org.hy.common.xml.plugins.analyse.AnalysesServlet</servlet-class>
     </servlet>

@@ -124,7 +124,7 @@ public class GetLoginCodeServlet extends BaseServlet
                 v_User.setAppKey(v_AppKey);
                 v_User.setSessionID(i_Request.getSession().getId());
                 
-                Cookie v_Cookie = new Cookie("UCID", URLEncoder.encode(v_AES.encrypt(v_User.getSessionID()) ,"UTF-8"));
+                Cookie v_Cookie = new Cookie("UCID", URLEncoder.encode(v_AES.encrypt(v_User.getSessionID() + "@" + v_AppKey) ,"UTF-8"));
                 i_Response.addCookie(v_Cookie);
                 
                 $CodeToAppKeys.put(v_ResponseData.getData().getCode() ,v_User ,5 * 60);

@@ -105,26 +105,44 @@ public class AliveListener implements CommunicationListener
             }
         }
         
-        XJava.putObject(i_RequestData.getDataXID() ,i_RequestData.getData() ,i_RequestData.getDataExpireTimeLen());
+        alive(i_RequestData.getDataXID() ,i_RequestData.getData() ,i_RequestData.getDataExpireTimeLen());
+        
+        v_ResponseData.setDataXID(i_RequestData.getDataXID());
+        return v_ResponseData;
+    }
+    
+    
+    
+   /**
+    * 持会话活力及有效性
+    * 
+    * @author      ZhengWei(HY)
+    * @createDate  2021-01-04
+    * @version     v1.0
+    *
+    * @param i_DataXID            会话ID
+    * @param i_Data               会话数据（一般为登陆的用户信息）
+    * @param i_DataExpireTimeLen  数据的过期时长(单位：秒)。小于等于0或为空，表示永远有效
+    */
+    public static void alive(String i_DataXID ,Object i_Data ,long i_DataExpireTimeLen)
+    {
+        XJava.putObject(i_DataXID ,i_Data ,i_DataExpireTimeLen);
         
         int     v_Interval = Integer.parseInt(XJava.getParam("AliveIntervalTime").getValue());
-        Date    v_Time     = $CacheTimes.get(i_RequestData.getDataXID());
+        Date    v_Time     = $CacheTimes.get(i_DataXID);
         boolean v_IsPush   = (v_Time == null);
         
         if ( v_IsPush )
         {
-            Log.log(":USID L保持集群会话活力。" ,i_RequestData.getDataXID());
+            Log.log(":USID L保持集群会话活力。" ,i_DataXID);
             
             if ( v_Interval > 0 )
             {
-                $CacheTimes.put(i_RequestData.getDataXID() ,new Date() ,v_Interval);
+                $CacheTimes.put(i_DataXID ,new Date() ,v_Interval);
             }
             
-            AppCluster.aliveCluster(i_RequestData.getDataXID() ,i_RequestData.getData() ,i_RequestData.getDataExpireTimeLen());
+            AppCluster.aliveCluster(i_DataXID ,i_Data ,i_DataExpireTimeLen);
         }
-        
-        v_ResponseData.setDataXID(i_RequestData.getDataXID());
-        return v_ResponseData;
     }
     
 }
