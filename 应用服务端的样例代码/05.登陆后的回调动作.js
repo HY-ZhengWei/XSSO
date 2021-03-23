@@ -6,19 +6,19 @@
  */
 function ssoLogin(i_SSOServer ,i_USID)
 {
-	if ( i_SSOServer != null && i_SSOServer != undefined && i_SSOServer != "" )
-	{
-		if ( i_USID != null && i_USID != undefined && i_USID != "" )
-		{
-			$.ajax(  
-		    {
-		        type     : 'get',  
-		        url      : 'https://' + i_SSOServer + '/XSSO/sso?USID=' + i_USID,  
-		        dataType : 'jsonp',  
-		        jsonp    : "jsoncallback",  
-		        success  : function(data) {},  
-		        error    : function() {}  
-		    });
-		}
-	}
+    if ( i_SSOServer != null && i_SSOServer != undefined && i_SSOServer != "" )
+    {
+        if ( i_USID != null && i_USID != undefined && i_USID != "" )
+        {
+            $.ajax(  
+            {
+                type     : 'get',  
+                url      : 'https://' + i_SSOServer + '/XSSO/sso?USID=' + i_USID,  
+                dataType : 'jsonp',  
+                jsonp    : "jsoncallback",  
+                success  : function(data) {},  
+                error    : function() {}  
+            });
+        }
+    }
 }

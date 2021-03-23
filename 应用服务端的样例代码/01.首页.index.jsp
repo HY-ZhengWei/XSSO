@@ -8,13 +8,13 @@
   <head>
    
     <title>应用服务</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	
-	<script type="text/javascript"> 
-	
-	function postGoto(i_URL ,i_ParamNames ,i_ParamValues) 
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">    
+    
+    <script type="text/javascript"> 
+    
+    function postGoto(i_URL ,i_ParamNames ,i_ParamValues) 
     {
         var v_TempForm = document.createElement("form");
         v_TempForm.action        = i_URL;
@@ -35,36 +35,36 @@
         document.body.appendChild(v_TempForm);
         v_TempForm.submit();
     }
-	
-	
-	
-	var USID = "";
-	
+    
+    
+    
+    var USID = "";
+    
     function getUSID(i_USID)
     {
-    	if ( USID == "" && i_USID != null && i_USID != undefined && i_USID != "" )
-   		{
-    		USID = i_USID;
-    		postGoto("${ctx}/02.登陆页面.login.do" ,["USID"] ,[i_USID]);
-   		}
-    	else
-   		{
-    		window.location.href = "02.登陆页面.login.do";
-   		}
+        if ( USID == "" && i_USID != null && i_USID != undefined && i_USID != "" )
+        {
+            USID = i_USID;
+            postGoto("${ctx}/02.登陆页面.login.do" ,["USID"] ,[i_USID]);
+        }
+        else
+        {
+            window.location.href = "02.登陆页面.login.do";
+        }
     }
     
-	</script>  
-	
+    </script>  
+    
   </head>
   
   <body>
-  	
-  	<%
-  	String v_ClusterServer = StringHelp.replaceAll(XJava.getParam("SSOServersHttp").getValue() ,new String[]{" " ,"\t" ,"\r" ,"\n"} ,new String[]{""});
-  	%>
-  	
-  	<!-- 建议放在整个页面的最后的位置 -->
-	<script type="text/javascript" src="https://<%=v_ClusterServer%>/XSSO/sso?SSOCallBack=getUSID&r=<%= new Date().getTime() %>"></script>
+    
+    <%
+    String v_ClusterServer = StringHelp.replaceAll(XJava.getParam("SSOServersHttp").getValue() ,new String[]{" " ,"\t" ,"\r" ,"\n"} ,new String[]{""});
+    %>
+    
+    <!-- 建议放在整个页面的最后的位置 -->
+    <script type="text/javascript" src="https://<%=v_ClusterServer%>/XSSO/sso?SSOCallBack=getUSID&r=<%= new Date().getTime() %>"></script>
 
   </body>
 </html>

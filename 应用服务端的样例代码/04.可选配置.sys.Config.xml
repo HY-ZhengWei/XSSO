@@ -2,53 +2,53 @@
 
 <config>
 
-	<import name="xconfig"         class="java.util.ArrayList" />
-	<import name="xparam"          class="java.util.Hashtable" />
-	<import name="item"            class="org.hy.common.app.Param" />
-	
-	
-	
-	<!-- 系统配置参数信息 -->
-	<xconfig>
-		
-	    <xparam id="SYSParam" key="name">
-	    
-	    	<item id="RootPackageName">
-	            <name>RootPackageName</name>
-				<value>xxx.xxx.xxx</value>
-				<comment>顶级包的路径。用于初始化。一般不修改</comment>
-	        </item>
-	    
-	        <item id="SSOServers">
-	            <name>SSOServers</name>
-				<value>
-				    192.168.1.103:1821
-				</value>
-				<comment>全部单点登陆验证服务器列表(用逗号分隔)</comment>
-	        </item>
-	        
-	        <item id="SSOServersHttp">
-	            <name>SSOServersHttp</name>
-				<value>
-				    192.168.1.103:8080
-				</value>
-				<comment>单点登陆验证服务器的Http访问列表(用逗号分隔)</comment>
-	        </item>
-	        
-	        <item id="ClusterTimeout">
-	            <name>ClusterTimeout</name>
-				<value>30000</value>
-				<comment>集群并发通讯的超时时长(单位：毫秒)</comment>
-	        </item>
-	        
-	        <item id="SSOSessionTimeOut">
-	            <name>SSOSessionTimeOut</name>
-				<value>3600</value>
-				<comment>单点登陆的会话超时时长(单位：秒)</comment>
-	        </item>
-	    
-		</xparam>
-		
-	</xconfig>
-	
+    <import name="xconfig"         class="java.util.ArrayList" />
+    <import name="xparam"          class="java.util.Hashtable" />
+    <import name="item"            class="org.hy.common.app.Param" />
+    
+    
+    
+    <!-- 系统配置参数信息 -->
+    <xconfig>
+        
+        <xparam id="SYSParam" key="name">
+        
+            <item id="RootPackageName">
+                <name>RootPackageName</name>
+                <value>xxx.xxx.xxx</value>
+                <comment>顶级包的路径。用于初始化。一般不修改</comment>
+            </item>
+        
+            <item id="SSOServers">
+                <name>SSOServers</name>
+                <value>
+                    192.168.1.103:1821
+                </value>
+                <comment>全部单点登陆验证服务器列表(用逗号分隔)</comment>
+            </item>
+            
+            <item id="SSOServersHttp">
+                <name>SSOServersHttp</name>
+                <value>
+                    192.168.1.103:8080
+                </value>
+                <comment>单点登陆验证服务器的Http访问列表(用逗号分隔)</comment>
+            </item>
+            
+            <item id="ClusterTimeout">
+                <name>ClusterTimeout</name>
+                <value>30000</value>
+                <comment>集群并发通讯的超时时长(单位：毫秒)</comment>
+            </item>
+            
+            <item id="SSOSessionTimeOut">
+                <name>SSOSessionTimeOut</name>
+                <value>3600</value>
+                <comment>单点登陆的会话超时时长(单位：秒)</comment>
+            </item>
+        
+        </xparam>
+        
+    </xconfig>
+    
 </config>

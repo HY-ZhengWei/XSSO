@@ -103,7 +103,7 @@ public class GetAccessTokenServlet extends BaseServlet
             if ( Help.isNull(v_Timestamp) 
               || !Help.isNumber(v_Timestamp) 
               || Long.parseLong(v_Timestamp) > v_Now + 1000 * 60
-              || Long.parseLong(v_Timestamp) < v_Now - 1000 * 60 * 60 * 2 )
+              || Long.parseLong(v_Timestamp) < v_Now - 1000 * 60 * 3 )
             {
                 v_ResponseData.setCode("10012");
                 v_ResponseData.setMessage("时间戳无效或已过期！");

@@ -26,17 +26,17 @@ import xxx.xxx.User;
 public class SessionInterceptor implements MethodInterceptor 
 {
     
-	public Object invoke(MethodInvocation invocation) throws Throwable 
-	{
-		User v_LoginUser = (User)getSession().getAttribute(LoginAction.$SessionID);
-		
-		if ( v_LoginUser == null ) 
-		{
-			throw new RuntimeException("会话超时或用户已单点退出！");
-		}
-		else
-		{
-		    ISSODAO       v_SSODAO      = (ISSODAO) XJava.getObject("SSODAO");
+    public Object invoke(MethodInvocation invocation) throws Throwable 
+    {
+        User v_LoginUser = (User)getSession().getAttribute(LoginAction.$SessionID);
+        
+        if ( v_LoginUser == null ) 
+        {
+            throw new RuntimeException("会话超时或用户已单点退出！");
+        }
+        else
+        {
+            ISSODAO       v_SSODAO      = (ISSODAO) XJava.getObject("SSODAO");
             Communication v_SessionData = (Communication)XJava.getObject(v_User.getSessionID());
             
             // 尝试从单点服务上获取会话信息
@@ -51,16 +51,16 @@ public class SessionInterceptor implements MethodInterceptor
                 v_Session.invalidate();
                 throw new RuntimeException("会话超时或用户已单点退出！");
             }
-		    else
-		    {
-		        getSession().setAttribute(LoginAction.$SessionID ,v_LoginUser);
-		        
-		        ISSODAO v_SSODAO = (ISSODAO) XJava.getObject("SSODAO");
-		        v_SSODAO.aliveClusterUser(v_SessionData.getDataXID() ,(User)v_SessionData.getData());
-		    }
-		}
-		
-		return invocation.proceed();
-	}
-	
+            else
+            {
+                getSession().setAttribute(LoginAction.$SessionID ,v_LoginUser);
+                
+                ISSODAO v_SSODAO = (ISSODAO) XJava.getObject("SSODAO");
+                v_SSODAO.aliveClusterUser(v_SessionData.getDataXID() ,(User)v_SessionData.getData());
+            }
+        }
+        
+        return invocation.proceed();
+    }
+    
 }
